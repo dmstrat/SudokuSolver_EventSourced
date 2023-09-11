@@ -6,7 +6,8 @@ namespace SudokuGameBoard
   {
     public static GameBoard Create(ILogger? logger = null)
     {
-      return new GameBoard(logger);
+      var newGameBoard = new GameBoard(logger);
+      return newGameBoard;
     }
   }
 }

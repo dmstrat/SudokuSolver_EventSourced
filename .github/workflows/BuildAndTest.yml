@@ -1,0 +1,40 @@
+name: Build with Tests
+
+on: 
+    pull_request:
+        branches: 
+            - main
+            - development
+
+env:
+    DOTNET_VERSION: 6.0
+
+jobs: 
+    test:
+        name: Build and Test
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: microsoft/setup-msbuild@v1
+            - uses: NuGet/setup-nuget@v1.1.1
+            - uses: darenm/Setup-VSTest@v1.2
+
+            - name: Restore Nuget Packages
+              id: restore
+              run: |
+                nuget restore SudokuSolverEventSourced.sln
+              shell: cmd
+
+            - name: Build Solution
+              id: buildsolution
+              run: |
+                msbuild.exe SudokuSolverEventSourced.sln -property:Configuration=Release
+              shell: cmd
+
+            - name: Run Tests
+              id: testrun
+              run: |
+                vstest.console.exe GameBoard.Unit.Tests\**\bin\Release\**\GameBoard.Unit.Tests.dll /logger:trx
+                vstest.console.exe SudokuSolver.Engine.Unit.Tests\**\bin\Release\**\SudokuSolver.Engine.Unit.Tests.dll /logger:trx
+              shell: cmd
+

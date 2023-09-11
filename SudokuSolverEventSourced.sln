@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuGameBoard", "GameBoar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuGameBoard.Unit.Tests", "GameBoard.Unit.Tests\SudokuGameBoard.Unit.Tests.csproj", "{5E90C004-9C1F-4EF5-B077-3F6FE732AA8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver.Engine", "SudokuSolver.Engine\SudokuSolver.Engine.csproj", "{2575D595-76B8-4AFE-940F-E18283772D3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver.Engine.Unit.Tests", "SudokuSolver.Engine.Unit.Tests\SudokuSolver.Engine.Unit.Tests.csproj", "{AC49A228-9A5F-4886-A398-686305253961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{5E90C004-9C1F-4EF5-B077-3F6FE732AA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E90C004-9C1F-4EF5-B077-3F6FE732AA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E90C004-9C1F-4EF5-B077-3F6FE732AA8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2575D595-76B8-4AFE-940F-E18283772D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2575D595-76B8-4AFE-940F-E18283772D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2575D595-76B8-4AFE-940F-E18283772D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2575D595-76B8-4AFE-940F-E18283772D3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC49A228-9A5F-4886-A398-686305253961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC49A228-9A5F-4886-A398-686305253961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC49A228-9A5F-4886-A398-686305253961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC49A228-9A5F-4886-A398-686305253961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
