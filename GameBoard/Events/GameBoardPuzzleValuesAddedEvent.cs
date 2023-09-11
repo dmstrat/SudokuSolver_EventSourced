@@ -11,8 +11,8 @@ namespace SudokuGameBoard.Events
     public string GamePuzzleValuesAsZeroOrSpaceString { get; set; }
     public GameBoardPuzzleValuesAddedEvent(string puzzleValues)
     {
-      Name = "Puzzle Values Added";
-      EventId = new Guid("43A289A1-B405-4584-A19A-4325C9AFDCBB");
+      Name = GameBoardGuides.GameBoardPuzzleValuesAddedEventName;
+      EventId = GameBoardGuides.GameBoardPuzzleValuesAddedEventEventId;
       GamePuzzleValuesAsZeroOrSpaceString = puzzleValues;
     }
 

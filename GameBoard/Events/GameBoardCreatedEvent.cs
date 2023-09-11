@@ -1,4 +1,5 @@
-﻿using SudokuGameBoard.Guides;
+﻿using Sudoku.GameBoard.Exceptions;
+using SudokuGameBoard.Guides;
 
 namespace SudokuGameBoard.Events
 {
@@ -10,12 +11,13 @@ namespace SudokuGameBoard.Events
   {
     public GameBoardCreatedEvent()
     {
-      Name = "Board Created";
-      EventId = new Guid("73B211DE-21C3-4FC9-8E52-ECB4A06B1024");
+      Name = GameBoardGuides.GameBoardCreatedEventName;
+      EventId = GameBoardGuides.GameBoardCreatedEventEventId;
     }
 
     public override void ApplyTo(GameBoard gameBoard)
     {
+      ValidateEvent(gameBoard);
       var gameCells = new List<GameCell>();
       for (var cellIndex = 0; cellIndex < GameBoardGuides.GAME_BOARD_CELL_COUNT; cellIndex++)
       {
@@ -23,6 +25,15 @@ namespace SudokuGameBoard.Events
         gameCells.Add(newCell);
       }
       gameBoard.Cells = gameCells;
+    }
+
+    public override void ValidateEvent(GameBoard gameBoard)
+    {
+      var boardAlreadyInitialized = gameBoard.Cells?.Any() ?? false;
+      if (boardAlreadyInitialized)
+      {
+        throw new GameBoardAlreadyHasGameCells("This event can only be applied once to an existing Game Board");
+      }
     }
   }
 }

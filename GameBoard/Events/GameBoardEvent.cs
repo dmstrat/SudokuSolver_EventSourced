@@ -1,9 +1,16 @@
-﻿namespace SudokuGameBoard.Events;
+﻿using SudokuGameBoard.Guides;
+
+namespace SudokuGameBoard.Events;
 
 public abstract class GameBoardEvent
 {
-  public string Name { get; internal set; } = "UNNAMED EVENT";
-  public Guid EventId { get; internal set; } = new ("00000000-0000-0000-0000-000000000001");
+  public string Name { get; internal set; } = GameBoardGuides.GameBoardEventNameDefault;
+  public Guid EventId { get; internal set; } = GameBoardGuides.GameBoardEventEventIdDefault;
 
   public abstract void ApplyTo(GameBoard gameBoard);
+
+  public virtual void ValidateEvent(GameBoard gameBoard)
+  {
+    //intentional no-op
+  }
 }

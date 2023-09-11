@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using Sudoku.GameBoard.Exceptions;
 using SudokuGameBoard.Events;
 using SudokuGameBoard.Unit.Tests.Loggers;
 
@@ -43,5 +44,16 @@ namespace SudokuGameBoard.Unit.Tests.Events
         Assert.That(gameBoard.EventHistory, Has.Exactly(expectedHistoryCount).Items);
       });
     }
+
+    [Test]
+    public void ApplyGameBoardCreatedEventMoreThanOnceThrowsException()
+    {
+      var gameBoard = GameBoardFactory.Create(_Logger);
+      var gameBoardCreatedEvent = new GameBoardCreatedEvent();
+
+      gameBoard.ApplyEvent(gameBoardCreatedEvent);
+
+      Assert.Throws<GameBoardAlreadyHasGameCells>(() => gameBoard.ApplyEvent(gameBoardCreatedEvent));
+    }
   }
-}
+} 

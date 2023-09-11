@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-using System.Xml;
-using Microsoft.Extensions.Logging;
-
-namespace SudokuGameBoard.Events
+﻿namespace SudokuGameBoard.Events
 {
   public class EmptyGameBoardIdentifiedEvent : GameBoardEvent
   {
