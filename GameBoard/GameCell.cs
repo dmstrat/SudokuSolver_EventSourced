@@ -1,12 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Sudoku.GameBoard.Exceptions;
 using SudokuGameBoard.Helpers;
 
 namespace SudokuGameBoard;
 
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public class GameCell
 {
+  private const string EMPTY_VALUE_AS_STRING = " ";
+
   public int Index { get; set; }
   public ILogger? Logger { get; set; }
 
@@ -37,4 +41,15 @@ public class GameCell
     }
     Value = newValue;
   }
+  private string DebuggerDisplay
+  {
+    get
+    {
+      var cellValue = Value.HasValue ? Value.Value.ToString() : EMPTY_VALUE_AS_STRING;
+      var debuggerString =
+        $"<{Index}>[{cellValue}]:";// {string.Join(",", PencilMarks)} / group: {GroupIndex} / row: {RowIndex} / column: {ColumnIndex} /";
+      return debuggerString;
+    }
+  }
+
 }
