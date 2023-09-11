@@ -42,7 +42,7 @@ namespace SudokuGameBoard
       var isInvalidValue = cellIndex is(< 0 or > 80);
       if (isInvalidValue)
       {
-        throw new InvalidIndexForCell();
+        throw new InvalidIndexForCell("Cell Index can NOT be out of range.");
       }
     }
   }
